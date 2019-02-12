@@ -6,7 +6,7 @@ app=Flask(__name__)
 def plot():
     from pandas_datareader import data
     import datetime
-    import fix_yahoo_finance as yf
+    #import fix_yahoo_finance as yf
     yf.pdr_override()
     from bokeh.plotting import figure, show, output_file
     from bokeh.embed import components
@@ -15,7 +15,7 @@ def plot():
     start=datetime.datetime(2015,11,1)
     end=datetime.datetime(2016,3,10)
 
-    df=data.get_data_yahoo(tickers="GOOG", start=start, end=end)
+df=data.DataReader(name="AAPL", data_source="yahoo", start=start, end=end)
 
 
     def inc_dec(c, o):
